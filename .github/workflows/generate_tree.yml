@@ -11,6 +11,10 @@ on:
         description: 'Dump branch'
         required: true
         default: ''
+      DUMP_DIR:
+        description: 'Dump dir'
+        required: true
+        default: ''
       DEVICE_BRAND:
         description: 'Device manufacturer'
         required: true
@@ -38,6 +42,7 @@ jobs:
       DU: ${{ github.event.inputs.DUMP_URL }}
       DB: ${{ github.event.inputs.DEVICE_BRAND}}
       DUB: ${{ github.event.inputs.DUMP_BRANCH }}
+      DD: ${{ github.event.inputs.DUMP_DIR }}
       CN: ${{ github.event.inputs.CODENAME }}
       GN: ${{ github.event.inputs.GIT_NAME }}
       GE: ${{ github.event.inputs.GIT_EMAIL }}
@@ -71,7 +76,7 @@ jobs:
         sudo mkdir LOS-Generator
         sudo chmod 777 LOS-Generator
         cd LOS-Generator
-        git clone ${{ env.DU }} -b ${{ env.DUB }}
+        git clone ${{ env.DU }} -b ${{ env.DUB }} ${{ env.SUB }}
 
     - name: Installing AOSPDTGEN
       id: setup-aosp-dtgen
