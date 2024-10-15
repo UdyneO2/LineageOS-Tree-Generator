@@ -52,8 +52,6 @@ jobs:
     - name: Update and install required packages
       id: setting-up
       run: |
-        sudo apt update 
-        sudo apt upgrade -y
         sudo apt install cpio python3 git -y
 
     - name: Setup GitHub CLI
