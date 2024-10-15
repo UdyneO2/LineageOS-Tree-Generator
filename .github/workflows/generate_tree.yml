@@ -76,7 +76,7 @@ jobs:
         sudo mkdir LOS-Generator
         sudo chmod 777 LOS-Generator
         cd LOS-Generator
-        git clone ${{ env.DU }} -b ${{ env.DUB }} ${{ env.SUB }}
+        git clone ${{ env.DU }} -b ${{ env.DUB }} ${{ env.DD }}
 
     - name: Installing AOSPDTGEN
       id: setup-aosp-dtgen
@@ -86,7 +86,7 @@ jobs:
     - name: Creating LineageOS Tree
       id: gen-dt
       run: |
-        cd /home/LOS-Generator/*
+        cd /home/LOS-Generator/${{ env.DD }}
         working_dump=$(pwd)
         python3 -m aospdtgen $working_dump
         echo "Successful!"
